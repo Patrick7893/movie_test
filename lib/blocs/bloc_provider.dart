@@ -8,6 +8,6 @@ class BlocProvider {
   static final instance = BlocProvider._internal();
 
   BlocProvider._internal() {
-    //bloc connections here
+    settingsBloc.settings.pipe(moviesBloc.settingsSink);
   }
 }

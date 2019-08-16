@@ -10,6 +10,7 @@ class MovieDetailsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print(movie.backdropUrl);
     return Scaffold(
       appBar: AppBar(),
       body: ListView(
@@ -45,7 +46,7 @@ class MovieDetailsPage extends StatelessWidget {
                           Text(movie.title,
                               style: Theme.of(context).textTheme.title),
                           SizedBox(height: 8.0),
-                          Text(DateFormat('dd MM yyyy')
+                          Text(DateFormat('yyyy-MM-dd')
                               .format(movie.releaseDate)),
                           SizedBox(height: 8.0),
                         ],

@@ -12,7 +12,6 @@ class SettingsBloc {
   }
 
   final _sharedPrefs = SharedPrefecrencesClient();
-
   final _settings = BehaviorSubject<Settings>();
 
   Function(bool) get setNotifications => (value) {
@@ -36,5 +35,9 @@ class SettingsBloc {
     } else {
       _settings.add(Settings());
     }
+  }
+
+  void dispose() {
+    _settings.close();
   }
 }

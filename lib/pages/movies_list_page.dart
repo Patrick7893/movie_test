@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:movies_test/blocs/bloc_provider.dart';
 import 'package:movies_test/models/movie.dart';
+import 'dart:convert';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:movies_test/pages/movie_details_page.dart';
 import 'package:movies_test/pages/settings_page.dart';
-import 'package:movies_test/navigation/fade_transition_route.dart';
+import 'package:movies_test/utils/notifications.dart';
 
 class MoviesListPage extends StatefulWidget {
   @override
@@ -15,6 +16,13 @@ class _MoviesListPageState extends State<MoviesListPage> {
   @override
   void initState() {
     BlocProvider.instance.moviesBloc.getUpcomingMovies();
+    Notifications.instance.init((payload) {
+      final movie = Movie.fromJson(json.decode(payload), false);
+      Navigator.of(context).push(MaterialPageRoute(
+          builder: (context) => MovieDetailsPage(
+                movie: movie,
+              )));
+    });
     super.initState();
   }
 

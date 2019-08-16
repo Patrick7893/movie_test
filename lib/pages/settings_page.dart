@@ -33,6 +33,12 @@ class _SettingsPageState extends State<SettingsPage> {
         ));
   }
 
+  @override
+  void dispose() {
+    BlocProvider.instance.settingsBloc.dispose();
+    super.dispose();
+  }
+
   Widget _notificationsCheckBox(bool value) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
